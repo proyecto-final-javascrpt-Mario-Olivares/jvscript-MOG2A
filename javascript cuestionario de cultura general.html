@@ -1,0 +1,63 @@
+<html>
+
+
+
+
+</script>
+<body>
+  <h1>Cuestionario de cultura general</h1>
+  <div id="preguntas">
+    <div>
+      <label for="q1">¿En qué año se descubrió América?</label>
+      <input type="text" id="q1">
+    </div>
+    <div>
+      <label for="q2">¿Cómo es la tierra?</label>
+      <input type="text" id="q2">
+    </div>
+    <div>
+      <label for="q3">¿En qué posición (indicar un número ej: 9) quedó Uranus FC en la temporada 2023-24 de la Liga Municipal de Madrid, distrito de Carabanchel?</label>
+      <input type="text" id="q3">
+    </div>
+    <div>
+      <label for="q4">¿Cuántas Ligas de Campeones tiene el Átletico de Madrid?</label>
+      <input type="text" id="q4">
+    </div>
+    <div>
+      <label for="q5">¿En qué día del mes de diciembre se celebra la Navidad?</label>
+      <input type="text" id="q5">
+    </div>
+  </div>
+  <button onclick="prueba()">Calificar</button>
+  <p id="resultado"></p>
+  <p id="tiempo"></p>
+
+  <script>
+    function prueba() {
+      const respuestas = ['1492', 'plana', '3', '0', '25'];
+      let correctAnswers = 0;
+      for (let i = 1; i <= 5; i++) {
+        const guess = document.getElementById('q' + i).value.trim().toLowerCase();
+        if (guess === respuestas[i - 1]) {
+          correctAnswers++;
+        }
+      }
+      const resultado = `Has acertado  ${correctAnswers} de 5 preguntas.`;
+      document.getElementById('resultado').textContent = resultado;
+    }
+
+    let secondsLeft = 60;
+    const Display = document.getElementById('tiempo');
+    const tiempo = setInterval(function() {
+      secondsLeft--;
+      Display.textContent = `Quedan ${secondsLeft} segundos`;
+      if (secondsLeft === 0) {
+        clearInterval(tiempo);
+        Display.textContent = "No queda tiempo, ¡y con lo fácil que era!";
+      }
+    }, 1000);
+  </script>
+
+ 
+</body>
+</html>
